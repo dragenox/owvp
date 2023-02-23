@@ -1,0 +1,15 @@
+.title{
+    height: 10%;
+    width: 100%;
+    background-color: antiquewhite;
+}
+.video{
+    height: 80%;
+    width: 100%;
+    background-color: black;
+}
+.controls{
+    height: 10%;
+    width: 100%;
+    background-color: antiquewhite;
+}

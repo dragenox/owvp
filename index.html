@@ -1,30 +1,100 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
     <title>owvp</title>
 </head>
+
 <body>
-    <div class="container">
-        <div class="title">
-            <h1>Video Title</h1>
-        </div>
-        <div class="video">
-
-        </div>
-        <div class="controls">
-            <div class="left">
-
+    <div class="video-container paused">
+        <div class="video-controls-container">
+            <div class="timeline-container"></div>
+            <div class="controls">
+                <!-- Left Side Controls -->
+                <div class="left-controls-container">
+                    <button class="open-files-btn">
+                        <svg class="open-files-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor"
+                                d="M140 896q-23 0-41.5-18.5T80 836V316q0-23 18.5-41.5T140 256h281l60 60h339q23 0 41.5 18.5T880 376H140v460l102-400h698L833 850q-6 24-22 35t-41 11H140Z" />
+                        </svg>
+                    </button>
+                    <button class="play-list-btn">
+                        <svg class="plist-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor"
+                                d="M100 726v-60h306v60H100Zm0-165v-60h473v60H100Zm0-165v-60h473v60H100Zm542 540V614l218 161-218 161Z" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Centre Controls -->
+                <div class="center-controls-container">
+                    <button class="prev-btn">
+                        <svg class="prev-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor" d="M220 816V336h60v480h-60Zm520 0L394 576l346-240v480Z" />
+                        </svg>
+                    </button>
+                    <button class="rwd-btn">
+                        <svg class="rwd-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor" d="M854 816 508 576l346-240v480Zm-402 0L106 576l346-240v480Z" />
+                        </svg>
+                    </button>
+                    <button class="play-pause-btn">
+                        <svg class="play-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor" d="M320 853V293l440 280-440 280Z" />
+                        </svg>
+                        <svg class="pause-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor" d="M525 856V296h235v560H525Zm-325 0V296h235v560H200Z" />
+                        </svg>
+                    </button>
+                    <button class="ffw-btn">
+                        <svg class="ffw-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor" d="M104 816V336l346 240-346 240Zm407 0V336l346 240-346 240Z" />
+                        </svg>
+                    </button>
+                    <button class="next-btn">
+                        <svg class="next-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor" d="M680 816V336h60v480h-60Zm-460 0V336l346 240-346 240Z" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Right Side Controls -->
+                <div class="right-controls-container">
+                    <button class="subtitles-btn">
+                        <svg class="subtitles-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor"
+                                d="M240 586h60v-60h-60v60Zm0 120h360v-60H240v60Zm420 0h60v-60h-60v60ZM360 586h360v-60H360v60ZM140 896q-24 0-42-18t-18-42V316q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H140Zm0-60h680V316H140v520Zm0 0V316v520Z" />
+                        </svg>
+                    </button>
+                    <button class="mini-player-btn">
+                        <svg class="pip-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor"
+                                d="M446 613h335V356H446v257ZM140 896q-24 0-42-18t-18-42V316q0-24 18-42t42-18h680q24.75 0 42.375 18T880 316v520q0 24-17.625 42T820 896H140Zm0-60V316v520Zm0 0h680V316H140v520Zm366-283V416h215v137H506Z" />
+                        </svg>
+                    </button>
+                    <button class="fullscreen-btn">
+                        <svg class="fscr-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor"
+                                d="M200 856V663h60v133h133v60H200Zm0-367V296h193v60H260v133h-60Zm367 367v-60h133V663h60v193H567Zm133-367V356H567v-60h193v193h-60Z" />
+                        </svg>
+                        <svg class="fscr-close-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor"
+                                d="M333 856V723H200v-60h193v193h-60Zm234 0V663h193v60H627v133h-60ZM200 489v-60h133V296h60v193H200Zm367 0V296h60v133h133v60H567Z" />
+                        </svg>
+                    </button>
+                    <button class="settings-btn">
+                        <svg class="settings-icon" viewBox="0 96 960 960">
+                            <path fill="currentColor"
+                                d="m388 976-20-126q-19-7-40-19t-37-25l-118 54-93-164 108-79q-2-9-2.5-20.5T185 576q0-9 .5-20.5T188 535L80 456l93-164 118 54q16-13 37-25t40-18l20-127h184l20 126q19 7 40.5 18.5T669 346l118-54 93 164-108 77q2 10 2.5 21.5t.5 21.5q0 10-.5 21t-2.5 21l108 78-93 164-118-54q-16 13-36.5 25.5T592 850l-20 126H388Zm92-270q54 0 92-38t38-92q0-54-38-92t-92-38q-54 0-92 38t-38 92q0 54 38 92t92 38Z" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="center">
-
-            </div>
-            <div class="right">
-
-            </div>
         </div>
+        <video src="./video/video.mp4"></video>
     </div>
 </body>
+
 </html>

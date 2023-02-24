@@ -9,12 +9,16 @@ body {
 }
 
 .video-container {
+    background-color: black;
     position: relative;
     width: 90%;
-    max-width: 1000px;
+    /* max-width: 1000px; */
+    max-height: 100%;
+    min-width: 520px;
     display: flex;
     justify-content: center;
     margin-inline: auto;
+    border: 1px solid magenta;
 }
 
 video {
@@ -63,8 +67,8 @@ video {
     /* border: 1px solid blue; */
     color: inherit;
     padding: 0;
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
     font-size: 1rem;
     cursor: pointer;
     opacity: .85;
@@ -80,5 +84,13 @@ video {
 }
 
 .video-container:not(.paused) .play-icon {
+    display: none;
+}
+
+.video-container.fullscreen .fscr-icon {
+    display: none;
+}
+
+.video-container:not(.fullscreen) .fscr-close-icon {
     display: none;
 }

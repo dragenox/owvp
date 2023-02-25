@@ -40,14 +40,42 @@ document.addEventListener('keydown', e => {
     e.target.blur();
 
     switch (e.key.toLowerCase()) {
+        // Play Pause
         case " ":
         case "k":
             togglePlay();
             break;
+        // Fullscreen
         case "f":
             toggleFullscreenMode();
             break;
+        // Fast forward
+        case "arrowleft":
+            if (e.shiftKey) {
+                rewind10();
+            } else {
+                rewind5();
+            }
+            break;
+        // Rewind
+        case "arrowright":
+            if (e.shiftKey) {
+                fastforward10();
+            } else {
+                fastforward5();
+            }
+            break;
+        // Volume Up
+        case "arrowup":
+            video.volume = Math.min(1, video.volume + .1);
+            break;
+        //Volume Down
+        case "arrowdown":
+            video.volume = Math.max(0, video.volume - .1);
+            break;
     }
+    // console.log('key:' + e.key);
+    // console.log('vol: ' + video.volume);
 });
 
 // Fullscreen
@@ -55,9 +83,20 @@ document.addEventListener('keydown', e => {
 //-- Control event Listeners --//
 
 // Open Files event listener
-openFilesBtn.addEventListener('click', () => {
-    alert("Open Files!");
-});
+openFilesBtn.addEventListener('click', openFiles);
+
+function openFiles() {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = _ => {
+        // you can use this method to get file and perform respective operations
+        // let files =   Array.from(input.files);
+        // console.log(files);
+        video.src(input.files);
+    };
+    input.click();
+    
+  }
 
 // Playlist button event listener
 playlistBtn.addEventListener('click', () => {
@@ -69,9 +108,22 @@ prevBtn.addEventListener('click', () => {
     alert("Previous!");
 });
 
-rwdBtn.addEventListener('click', () => {
-    alert("Rewind!");
-});
+// Rewind Button event listner
+rwdBtn.addEventListener('click', rewind5);
+
+function rewind5() {
+    video.currentTime -= 5;
+    if (video.currentTime == 0) {
+        video.pause();
+    }
+}
+
+function rewind10() {
+    video.currentTime -= 10;
+    if (video.currentTime == 0) {
+        video.pause();
+    }
+}
 
 // Play Pause Button event listerner
 playPauseBtn.addEventListener('click', togglePlay);
@@ -83,7 +135,6 @@ function togglePlay() {
 
 // Fast Forward Button event listener
 ffdBtn.addEventListener('click', fastforward5);
-// ffdBtn.addEventListener('pressed', fastforward10);
 
 function fastforward5() {
     video.currentTime += 5;

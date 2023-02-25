@@ -15,15 +15,21 @@ const pipBtn = document.querySelector('.pip-btn');
 const fullscreenBtn = document.querySelector('.fullscreen-btn');
 const settings = document.querySelector('.settings-btn');
 
+//Fit content
+window.resizeTo(video.clientWidth, video.clientHeight);
+
 //-- Event Listeners --//
 
-// Video event listener
+// Element event listener
 video.addEventListener('play', () => {
     videoContainer.classList.remove('paused');
 });
 
 video.addEventListener('pause', () => {
     videoContainer.classList.add('paused');
+});
+document.addEventListener('fullscreenchange', () => {
+    videoContainer.classList.toggle('fullscreen', document.fullscreenElement);
 });
 
 // Keyboard event listners
@@ -38,27 +44,32 @@ document.addEventListener('keydown', e => {
         case "k":
             togglePlay();
             break;
+        case "f":
+            toggleFullscreenMode();
+            break;
     }
 });
+
+// Fullscreen
 
 //-- Control event Listeners --//
 
 // Open Files event listener
-openFilesBtn.addEventListener('click', ()=>{
+openFilesBtn.addEventListener('click', () => {
     alert("Open Files!");
 });
 
 // Playlist button event listener
-playlistBtn.addEventListener('click', ()=>{
+playlistBtn.addEventListener('click', () => {
     alert("Playlist!");
 });
 
 // Previous Button event listener
-prevBtn.addEventListener('click', ()=>{
+prevBtn.addEventListener('click', () => {
     alert("Previous!");
 });
 
-rwdBtn.addEventListener('click', ()=>{
+rwdBtn.addEventListener('click', () => {
     alert("Rewind!");
 });
 
@@ -71,31 +82,45 @@ function togglePlay() {
 }
 
 // Fast Forward Button event listener
-ffdBtn.addEventListener('click', ()=>{
-    alert("Fast Forward!");
-});
+ffdBtn.addEventListener('click', fastforward5);
+// ffdBtn.addEventListener('pressed', fastforward10);
+
+function fastforward5() {
+    video.currentTime += 5;
+}
+
+function fastforward10() {
+    video.currentTime += 10;
+}
 
 //Next Button event listener
-nextBtn.addEventListener('click', ()=>{
+nextBtn.addEventListener('click', () => {
     alert("Next!");
 });
 
 // Subtitle Button event listener
-subtitlesBtn.addEventListener('click', ()=>{
+subtitlesBtn.addEventListener('click', () => {
     alert("Subtitles!");
 });
 
 // PiP Button event listener
-pipBtn.addEventListener('click', ()=>{
+pipBtn.addEventListener('click', () => {
     alert("PiP!");
 });
 
 // Fullscreen Button event listener
-fullscreenBtn.addEventListener('click', ()=>{
-    alert("Fullscreen!");
-});
+fullscreenBtn.addEventListener('click', toggleFullscreenMode);
+
+function toggleFullscreenMode() {
+    if (document.fullscreenElement == null) {
+        videoContainer.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+        window.resizeTo(video.clientWidth, video.clientHeight);
+    }
+}
 
 // Settings Button event listener
-settings.addEventListener('click', ()=>{
+settings.addEventListener('click', () => {
     alert("Settings!");
 });

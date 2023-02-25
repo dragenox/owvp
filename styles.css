@@ -6,13 +6,18 @@
 
 body {
     margin: 0;
+    display: flex;
+    align-items: center;
+    background-color: black;
 }
 
 .video-container {
     position: relative;
-    width: 90%;
-    max-width: 1000px;
+    width: 100%;
+    /* max-width: 1000px; */
     min-width: 520px;
+    max-height: 100vh;
+    object-fit: contain;
     display: flex;
     justify-content: center;
     margin-inline: auto;
@@ -54,9 +59,23 @@ video {
 .video-controls-container .controls {
     display: flex;
     justify-content: space-between;
-    gap: .5rem;
-    padding: .25rem;
+    padding: .25rem .75rem;
     align-items: center;
+}
+
+.left-controls-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.center-controls-container {
+    display: flex;
+    gap: .5rem;
+}
+
+.right-controls-container {
+    display: flex;
+    gap: .75rem;
 }
 
 .video-controls-container .controls button {

@@ -1,10 +1,12 @@
 // Containers
 const videoContainer = document.querySelector('.video-container');
+const videoControlsContainer = document.querySelector('.video-controls-container');
 const video = document.querySelector('video');
 
 // Buttons
 const openFilesBtn = document.querySelector('.open-files-btn');
 const playlistBtn = document.querySelector('.play-list-btn');
+const themeBtn = document.querySelector('.theme-btn');
 const prevBtn = document.querySelector('.prev-btn');
 const rwdBtn = document.querySelector('.rwd-btn');
 const playPauseBtn = document.querySelector('.play-pause-btn');
@@ -92,6 +94,13 @@ openFilesBtn.addEventListener('click', openFiles);
 playlistBtn.addEventListener('click', () => {
     alert("Playlist!");
 });
+
+// Theme button event listener
+themeBtn.addEventListener('click', toggleTheme);
+function toggleTheme() {
+    videoControlsContainer.classList.toggle('chromeos-theme');
+    videoControlsContainer.classList.toggle('youtube-theme');
+}
 
 // Previous Button event listener
 prevBtn.addEventListener('click', () => {

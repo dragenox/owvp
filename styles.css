@@ -39,7 +39,7 @@ video {
     transition: opacity 150ms ease-in-out;
 }
 
-.video-controls-container.chromeos-theme {
+.chromeos-theme {
     margin: 10px 10px;
     padding: 5px 0px;
     border: 1px solid rgba(55, 55, 55, .8);
@@ -50,12 +50,12 @@ video {
     backdrop-filter: blur(4px);
 }
 
-.video-controls-container.yt-theme {
+.youtube-theme {
     margin: 0px 0px;
     padding: 0px 0px;
 }
 
-.video-controls-container.yt-theme::before {
+.youtube-theme::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -81,12 +81,12 @@ video {
 
 .left-controls-container {
     display: flex;
-    gap: 1.5rem;
+    gap: .75rem;
 }
 
 .center-controls-container {
     display: flex;
-    gap: .5rem;
+    gap: .75rem;
 }
 
 .right-controls-container {
@@ -97,11 +97,11 @@ video {
 .video-controls-container .controls button {
     background: none;
     border: none;
-    /* border: 1px solid blue; */
+    /* border: 1px solid red; */
     color: inherit;
     padding: 0;
-    height: 30px;
-    width: 30px;
+    height: 36px;
+    width: 36px;
     font-size: 1rem;
     cursor: pointer;
     opacity: .8;
@@ -125,5 +125,13 @@ video {
 }
 
 .video-container:not(.fullscreen) .fscr-close-icon {
+    display: none;
+}
+
+.video-controls-container.chromeos-theme .youtube-icon {
+    display: none;
+}
+
+.video-controls-container.youtube-theme .chromeos-icon {
     display: none;
 }

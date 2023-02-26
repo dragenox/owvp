@@ -39,7 +39,23 @@ video {
     transition: opacity 150ms ease-in-out;
 }
 
-.video-controls-container::before {
+.video-controls-container.chromeos-theme {
+    margin: 10px 10px;
+    padding: 5px 0px;
+    border: 1px solid rgba(55, 55, 55, .8);
+    border-radius: 500px;
+    /*fallback color*/
+    background-color: rgb(55, 55, 55);
+    background-color: rgba(55, 55, 55, .8);
+    backdrop-filter: blur(4px);
+}
+
+.video-controls-container.yt-theme {
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+.video-controls-container.yt-theme::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -88,7 +104,7 @@ video {
     width: 30px;
     font-size: 1rem;
     cursor: pointer;
-    opacity: .85;
+    opacity: .8;
     transition: opacity 150ms ease-in-out;
 }
 

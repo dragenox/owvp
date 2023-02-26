@@ -20,7 +20,9 @@ window.resizeTo(video.clientWidth, video.clientHeight);
 
 //-- Event Listeners --//
 
-// Element event listener
+//-- Element event listeners
+
+//Play Pause
 video.addEventListener('play', () => {
     videoContainer.classList.remove('paused');
 });
@@ -28,12 +30,15 @@ video.addEventListener('play', () => {
 video.addEventListener('pause', () => {
     videoContainer.classList.add('paused');
 });
+
+video.addEventListener('click', togglePlay);
+
+// Fullscreen
 document.addEventListener('fullscreenchange', () => {
     videoContainer.classList.toggle('fullscreen', document.fullscreenElement);
 });
 
 // Keyboard event listners
-//Play Pause
 document.addEventListener('keydown', e => {
     // Remove focus to prevent double event
     e.preventDefault();
@@ -78,25 +83,10 @@ document.addEventListener('keydown', e => {
     // console.log('vol: ' + video.volume);
 });
 
-// Fullscreen
-
-//-- Control event Listeners --//
+//-- Control event Listeners
 
 // Open Files event listener
 openFilesBtn.addEventListener('click', openFiles);
-
-function openFiles() {
-    let input = document.createElement('input');
-    input.type = 'file';
-    input.onchange = _ => {
-        // you can use this method to get file and perform respective operations
-        // let files =   Array.from(input.files);
-        // console.log(files);
-        video.src(input.files);
-    };
-    input.click();
-    
-  }
 
 // Playlist button event listener
 playlistBtn.addEventListener('click', () => {
@@ -111,38 +101,11 @@ prevBtn.addEventListener('click', () => {
 // Rewind Button event listner
 rwdBtn.addEventListener('click', rewind5);
 
-function rewind5() {
-    video.currentTime -= 5;
-    if (video.currentTime == 0) {
-        video.pause();
-    }
-}
-
-function rewind10() {
-    video.currentTime -= 10;
-    if (video.currentTime == 0) {
-        video.pause();
-    }
-}
-
 // Play Pause Button event listerner
 playPauseBtn.addEventListener('click', togglePlay);
-video.addEventListener('click', togglePlay);
-
-function togglePlay() {
-    video.paused ? video.play() : video.pause();
-}
 
 // Fast Forward Button event listener
 ffdBtn.addEventListener('click', fastforward5);
-
-function fastforward5() {
-    video.currentTime += 5;
-}
-
-function fastforward10() {
-    video.currentTime += 10;
-}
 
 //Next Button event listener
 nextBtn.addEventListener('click', () => {
@@ -162,6 +125,60 @@ pipBtn.addEventListener('click', () => {
 // Fullscreen Button event listener
 fullscreenBtn.addEventListener('click', toggleFullscreenMode);
 
+// Settings Button event listener
+settings.addEventListener('click', () => {
+    alert("Settings!");
+});
+
+//-- Functions
+
+// Open Files
+function openFiles() {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'video/*';
+    input.addEventListener('change', () => {
+        var file = input.files[0];
+        if (video.canPlayType(file.type)) {
+            video.src = URL.createObjectURL(file);
+            video.load();
+        } else {
+            alert('Error! File format not supported.');
+        }
+    }, false);
+    input.click();
+}
+
+// Rewind
+function rewind5() {
+    video.currentTime -= 5;
+    if (video.currentTime == 0) {
+        video.pause();
+    }
+}
+
+function rewind10() {
+    video.currentTime -= 10;
+    if (video.currentTime == 0) {
+        video.pause();
+    }
+}
+
+// Play Pause
+function togglePlay() {
+    video.paused ? video.play() : video.pause();
+}
+
+// Fast Forward
+function fastforward5() {
+    video.currentTime += 5;
+}
+
+function fastforward10() {
+    video.currentTime += 10;
+}
+
+// Fullscreen
 function toggleFullscreenMode() {
     if (document.fullscreenElement == null) {
         videoContainer.requestFullscreen();
@@ -170,8 +187,3 @@ function toggleFullscreenMode() {
         window.resizeTo(video.clientWidth, video.clientHeight);
     }
 }
-
-// Settings Button event listener
-settings.addEventListener('click', () => {
-    alert("Settings!");
-});

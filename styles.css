@@ -14,10 +14,10 @@ body {
 .video-container {
     position: relative;
     width: 100%;
-    min-width: 520px;
     max-height: 100vh;
     object-fit: contain;
     display: flex;
+    min-width: 0;
     justify-content: center;
     margin-inline: auto;
     border: 1px solid magenta;
@@ -41,12 +41,12 @@ video {
 .chromeos-theme {
     margin: 10px 10px;
     padding: 5px 0px;
-    border: 1px solid rgba(55, 55, 55, .8);
+    border: 2px solid rgba(45, 45, 45, .9);
     border-radius: 500px;
     /*fallback color*/
-    background-color: rgb(55, 55, 55);
-    background-color: rgba(55, 55, 55, .8);
-    backdrop-filter: blur(4px);
+    background-color: rgb(30, 30, 30);
+    background-color: rgba(30, 30, 30, .9);
+    backdrop-filter: blur(8px);
 }
 
 .youtube-theme {
@@ -73,11 +73,9 @@ video {
 
 .video-controls-container .controls {
     display: flex;
-    min-width: 0;
     padding: .25rem .75rem;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap;
 }
 
 .left-controls-container,
@@ -85,6 +83,15 @@ video {
 .right-controls-container {
     display: flex;
     gap: .75rem;
+}
+
+.left-controls-container,
+.right-controls-container {
+    flex: 1;
+}
+
+.right-controls-container {
+    justify-content: flex-end;
 }
 
 .video-controls-container .controls button {

@@ -128,6 +128,18 @@ video {
     display: none;
 }
 
+.volume-btn:not(.high) .vol-up-icon {
+    display: none;
+}
+
+.volume-btn:not(.low) .vol-down-icon {
+    display: none;
+}
+
+.volume-btn:not(.mute) .vol-mute-icon {
+    display: none;
+}
+
 .video-controls-container.chromeos-theme .youtube-icon {
     display: none;
 }

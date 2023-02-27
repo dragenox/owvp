@@ -7,6 +7,7 @@ const video = document.querySelector('video');
 const openFilesBtn = document.querySelector('.open-files-btn');
 const playlistBtn = document.querySelector('.play-list-btn');
 const themeBtn = document.querySelector('.theme-btn');
+const volumeBtn = document.querySelector('.volume-btn');
 const prevBtn = document.querySelector('.prev-btn');
 const rwdBtn = document.querySelector('.rwd-btn');
 const playPauseBtn = document.querySelector('.play-pause-btn');
@@ -23,6 +24,23 @@ window.resizeTo(video.clientWidth, video.clientHeight);
 //-- Event Listeners --//
 
 //-- Element event listeners
+
+video.addEventListener('volumechange', ()=>{
+    if(video.muted || video.volume == 0){
+        volumeBtn.classList.remove('high');
+        volumeBtn.classList.remove('low');
+        volumeBtn.classList.add('mute');
+    } else {
+        volumeBtn.classList.remove('mute');
+        if(video.volume>.5){
+            volumeBtn.classList.remove('low');
+            volumeBtn.classList.add('high');
+        }else{
+            volumeBtn.classList.remove('high');
+            volumeBtn.classList.add('low');
+        }
+    }
+});
 
 //Play Pause
 video.addEventListener('play', () => {

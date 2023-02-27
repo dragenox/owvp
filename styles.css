@@ -74,24 +74,25 @@ video {
 
 .video-controls-container .controls {
     display: flex;
-    justify-content: space-between;
     padding: .25rem .75rem;
-    align-items: center;
+    /* justify-content: space-between;
+    align-items: center; */
 }
 
-.left-controls-container {
+.left-controls-container, 
+.center-controls-container,
+.right-controls-container{
     display: flex;
     gap: .75rem;
 }
 
-.center-controls-container {
-    display: flex;
-    gap: .75rem;
+.left-controls-container,
+.right-controls-container {
+    flex: 1;
 }
 
 .right-controls-container {
-    display: flex;
-    gap: .75rem;
+    justify-content: flex-end;
 }
 
 .video-controls-container .controls button {
@@ -128,7 +129,54 @@ video {
     display: none;
 }
 
-.volume-btn:not(.high) .vol-up-icon {
+.vol-high-icon,
+.vol-low-icon,
+.vol-mute-icon {
+    display: none;
+}
+
+.video-container[data-volume-level="high"] .vol-high-icon {
+    display: block;
+}
+
+.video-container[data-volume-level="low"] .vol-low-icon {
+    display: block;
+}
+
+.video-container[data-volume-level="mute"] .vol-mute-icon {
+    display: block;
+}
+
+.volume-container {
+    display: flex;
+    align-items: center;
+}
+
+/* .volume-slider-container{
+    position: absolute;
+    top: -115%;
+    transform: rotate(270deg);
+    border: 1px solid rgba(55, 55, 55, .8);
+    border-radius: 500px;
+    background-color: rgb(55, 55, 55);
+    background-color: rgba(55, 55, 55, .8);
+    backdrop-filter: blur(4px);
+} */
+
+.volume-slider{
+    width: 0;
+    margin: 5px;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: width 150ms ease-in-out;
+}
+
+.volume-container:hover .volume-slider{
+    width: 100px;
+    transform: scaleX(1);
+}
+
+/* .volume-btn:not(.high) .vol-up-icon {
     display: none;
 }
 
@@ -138,7 +186,7 @@ video {
 
 .volume-btn:not(.mute) .vol-mute-icon {
     display: none;
-}
+} */
 
 .video-controls-container.chromeos-theme .youtube-icon {
     display: none;
